@@ -1,0 +1,99 @@
+############################
+# ASP.NET Core / .NET
+############################
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.userprefs
+*.csproj.user
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# Others
+*.dll
+*.exe
+*.app
+*.log
+*.pid
+*.tmp
+*.bak
+*.swp
+*.dbmdl
+*.jfm
+
+# Publish output
+publish/
+wwwroot/lib/
+
+############################
+# Python
+############################
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Jupyter notebooks
+.ipynb_checkpoints
+
+# IDE / Editor
+.idea/
+.spyproject/
+.ropeproject/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+############################
+# Common
+############################
+*.env
+.env.*
