@@ -1,0 +1,50 @@
+version: '3.8'
+
+networks:
+  public_network:
+    driver: bridge
+  internal_network:
+    driver: bridge
+    internal: true
+
+
+services:
+  service1:
+    build:
+      context: ./Service1
+      dockerfile: Service1.API/Dockerfile
+    networks:
+      - internal_network
+      - public_network
+    ports:
+      - 8199:8199
+    environment:
+      - ENVIRONMENT=production
+    volumes:
+      - ./vStorage:/app/vStorage
+      
+  service2:
+    build:
+      context: ./Service2
+      dockerfile: Dockerfile
+    networks:
+      - internal_network
+    environment:
+      - ENVIRONMENT=production
+    volumes:
+      - ./vStorage:/app/vStorage
+
+  storage:
+    build:
+      context: ./Storage
+      dockerfile: Dockerfile
+    networks:
+      - internal_network
+    environment:
+      - ENVIRONMENT=production
+    volumes:
+      - logs:/app/Storage/logs 
+
+volumes:
+  vStorage:
+  logs:

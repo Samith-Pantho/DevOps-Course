@@ -1,0 +1,5 @@
+fastapi
+requests
+httpx
+uvicorn
+uvicorn[standard]
