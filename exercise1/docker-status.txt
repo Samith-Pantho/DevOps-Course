@@ -1,0 +1,39 @@
+USER@SamithPantho MINGW64 /e/Development/DevOps/DevOps-Course/exercise1 (exercise1)
+$ docker container ls
+CONTAINER ID   IMAGE                COMMAND                  CREATED         STATUS         PORTS                                
+         NAMES
+8a36ea50f39e   exercise1-storage    "uvicorn index:app -…"   4 minutes ago   Up 4 minutes                                        
+         exercise1-storage-1
+d176e0cf0faa   exercise1-service2   "uvicorn index:app -…"   4 minutes ago   Up 4 minutes                                        
+         exercise1-service2-1
+027c33d91798   exercise1-service1   "dotnet Service1.API…"   4 minutes ago   Up 4 minutes   0.0.0.0:8199->8199/tcp, [::]:8199->8199/tcp   exercise1-service1-1
+
+USER@SamithPantho MINGW64 /e/Development/DevOps/DevOps-Course/exercise1 (exercise1)
+$ docker network ls
+NETWORK ID     NAME                         DRIVER    SCOPE
+065f101530e4   backend_default              bridge    local
+64c75e3b143b   bridge                       bridge    local
+68fcbe6d9163   eduml_net                    bridge    local
+643b553c484a   exercise1_internal_network   bridge    local
+a028402f6977   exercise1_public_network     bridge    local
+1cc578956245   host                         host      local
+619e44a5a82d   none                         null      local
+
+USER@SamithPantho MINGW64 /e/Development/DevOps/DevOps-Course/exercise1 (exercise1)
+$ docker-compose ps
+time="2025-09-21T01:42:47+03:00" level=warning msg="E:\\Development\\DevOps\\DevOps-Course\\exercise1\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+NAME                   IMAGE                COMMAND                  SERVICE    CREATED          STATUS          PORTS
+exercise1-service1-1   exercise1-service1   "dotnet Service1.API…"   service1   32 minutes ago   Up 32 minutes   0.0.0.0:8199->8199/tcp, [::]:8199->8199/tcp
+exercise1-service2-1   exercise1-service2   "uvicorn index:app -…"   service2   32 minutes ago   Up 32 minutes
+exercise1-storage-1    exercise1-storage    "uvicorn index:app -…"   storage    32 minutes ago   Up 32 minutes
+
+USER@SamithPantho MINGW64 /e/Development/DevOps/DevOps-Course/exercise1 (exercise1)
+$ docker network inspect exercise1_internal_network --format '{{range .Containers}}{{.Name}} {{.IPv4Address}}{{println}}{{end}}' 
+exercise1-service1-1 172.20.0.4/16
+exercise1-storage-1 172.20.0.3/16
+exercise1-service2-1 172.20.0.2/16
+
+
+USER@SamithPantho MINGW64 /e/Development/DevOps/DevOps-Course/exercise1 (exercise1)
+$ docker network inspect exercise1_public_network --format '{{range .Containers}}{{.Name}} {{.IPv4Address}}{{println}}{{end}}'   
+exercise1-service1-1 172.21.0.2/16
