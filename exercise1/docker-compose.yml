@@ -46,5 +46,4 @@ services:
       - logs:/app/Storage/logs 
 
 volumes:
-  vStorage:
   logs:

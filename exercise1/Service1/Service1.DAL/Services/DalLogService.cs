@@ -15,13 +15,8 @@ namespace Service1.DAL.Services
                 string messageFormat = $"{message}";
 
                 StreamWriter sw = null;
-                string path = "/app/vStorage";
-                if (!(Directory.Exists(path)))
-                {
-                    Directory.CreateDirectory(path);
-                }
-
-                string File = path + "/vStorage.txt";
+                string path = "/app";
+                string File = path + "/vStorage";
                 sw = new StreamWriter(File, true);
 
 

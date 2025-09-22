@@ -79,11 +79,9 @@ namespace Service1.DAL.Services
                 var resStorageServer = CallApi(storage, "/log", "application/json", "DELETE", null);
                 if (resStorageServer["success"].ToObject<bool>())
                 {
-                    string vstoragePath = Path.Combine(vstorage_dir, "vStorage.txt");
-
-                    if (File.Exists(vstoragePath))
+                    using (var stream = new FileStream(vstorage_dir, FileMode.Truncate))
                     {
-                        File.Delete(vstoragePath);
+                        // File cleared
                     }
                     return true;
                 }

@@ -8,10 +8,9 @@ async def SaveLog(message: str):
         )
 
         # Build path
-        log_dir = "/app/vStorage"
-        os.makedirs(log_dir, exist_ok=True)
+        log_dir = "/app"
 
-        log_filename = "vStorage.txt"
+        log_filename = "vStorage"
         log_path = os.path.join(log_dir, log_filename)
 
         # Append log message
